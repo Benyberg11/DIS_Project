@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Schedule an Appointment</h2>
+    <form method="POST" action="{{ url_for('Patient.schedule_appointment') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.date.label }} {{ form.date(class_="form-control", id="datePicker") }}
+        </div>
+        <div class="form-group">
+            {{ form.time.label }} {{ form.time(class_="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.doctor.label }} {{ form.doctor(class_="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.comment.label }} {{ form.comment(class_="form-control") }}
+        </div>
+        {{ form.submit(class_="btn btn-primary") }}
+    </form>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

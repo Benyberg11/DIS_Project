@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>About Page</h1>
+    <p>This medical portal was developed by DIS-project group 66, 2024:</p>
+    <ul>
+        <li>Nynne West Kristensen, bkf248</li>
+        <li>Benjamin Daniel Nyberg Shultz, mvf630</li>
+    </ul>
+    <p>
+        You can register new patient accounts through the portal. Doctor accounts must be entered by making changes to the DML-script schema_ins.sql. 
+        To log in, we have created some test accounts. The patient login can be accessed using a patient CPR number in the range 1001 to 1005 with the password '1'. 
+        The doctor login can be accessed using doctor ID 1 to 5 and the same password.
+    </p>
+    <p>
+        To add more sample data, make your changes to the DML-script schema_ins.sql.
+    </p>
+    <p>
+        This is a prototype. We have implemented several key functions, including patient registration, appointment scheduling, medical record management, prescription tracking, and more. Further enhancements and additional features can be built on top of this foundation.
+    </p>
+    <p>
+        The project is hosted on GitHub at <a href="https://github.com/nynn0166/DIS_project">this link</a>.
+    </p>
+{% endblock content %}
+

@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Welcome, {{ current_user.name }}</h1>
+    
+    {% if mysession["role"] == roles[iDoctor] %}
+        <h2>Doctor Dashboard</h2>
+        <!-- Add doctor-specific content here -->
+    {% elif mysession["role"] == roles[iPatient] %}
+        <h2>Patient Dashboard</h2>
+        <!-- Add patient-specific content here -->
+    {% endif %}
+    
+    <div class="row">
+        <div class="col-md-8">
+            <h2>News</h2>
+            <div class="newsbox">
+                <h3>Breaking News!</h3>
+                <p>We are excited to announce that Dr. Johnny Sins has joined our doctor family. With his extensive experience and unique approach, he is ready to tackle any medical challenge thrown his way. Get ready for some interesting consultations!</p>
+                <img src="{{ url_for('static', filename='images/john_sins_doctor.jpg') }}" alt="Dr. John Sins" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>Contact Info</h2>
+            <div class="contactbox">
+                <address>
+                    <strong>Our Clinic</strong><br>
+                    1234 Health St.<br>
+                    Medicine City, Careland<br>
+                    Phone: 555-123-4567<br>
+                    Email: contact@ourclinic.com<br>
+                </address>
+                <p><strong>Opening Hours:</strong></p>
+                <ul>
+                    <li>Monday - Friday: 8:00 AM - 3:00 PM</li>
+                    <li>Saturday: Closed </li>
+                    <li>Sunday: Closed</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock %}
+
+
+

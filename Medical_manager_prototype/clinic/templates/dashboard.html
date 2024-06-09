@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Welcome, {{ current_user.name }}</h1>
+
+    <div class="content-section">
+      <p>Patients' Medical Records:</p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Record ID</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">CPR Number</th>
+            <th scope="col">Record Details</th>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for record in medical_records %}
+          <tr>
+            <th scope="row">{{ record.id }}</th>
+            <td>{{ record.patient_name }}</td>
+            <td>{{ record.patient_id }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('Doctor.update_medical_record') }}">
+                    {{ form.hidden_tag() }}
+                    <input type="hidden" name="record_id" value="{{ record.id }}">
+                    <textarea name="record_details">{{ record.record_details }}</textarea>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </td>
+            <td>{{ record.create_date }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('Doctor.remove_patient') }}" onsubmit="return confirmRemove();">
+                    {{ form.hidden_tag() }}
+                    <input type="hidden" name="patient_id" value="{{ record.patient_id }}">
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="content-section">
+      <p>Upcoming Appointments:</p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Appointment ID</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Status</th>
+            <th scope="col">Comment</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for appointment in appointments %}
+          <tr>
+            <th scope="row">{{ appointment.appointment_id }}</th>
+            <td>{{ appointment.patient_name }}</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td>
+            <td>{{ appointment.status }}</td>
+            <td>{{ appointment.comment }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('Doctor.cancel_appointment') }}" onsubmit="return confirmCancel();">
+                    {{ form.hidden_tag() }}
+                    <input type="hidden" name="appointment_id" value="{{ appointment.appointment_id }}">
+                    <button type="submit" class="btn btn-danger">Cancel</button>
+                </form>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="content-section">
+      <p>Prescriptions:</p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Prescription ID</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Medication</th>
+            <th scope="col">Dosage</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for prescription in prescriptions %}
+          <tr>
+            <th scope="row">{{ prescription.prescription_id }}</th>
+            <td>{{ prescription.patient_name }}</td>
+            <td>{{ prescription.medication }}</td>
+            <td>{{ prescription.dosage }}</td>
+            <td>{{ prescription.start_date }}</td>
+            <td>{{ prescription.end_date }}</td>
+            <td>{{ prescription.notes }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('Doctor.remove_prescription') }}" onsubmit="return confirmRemove();">
+                    {{ form.hidden_tag() }}
+                    <input type="hidden" name="prescription_id" value="{{ prescription.prescription_id }}">
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <a class="btn btn-primary" href="{{ url_for('Doctor.add_prescription') }}">Add Prescription</a>
+
+    <!-- JavaScript for confirmation prompts -->
+    <script>
+        function confirmCancel() {
+            return confirm("Are you sure you want to cancel this appointment?");
+        }
+
+        function confirmRemove() {
+            return confirm("Are you sure you want to remove this?");
+        }
+    </script>
+{% endblock content %}

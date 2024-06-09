@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Upcoming Appointments</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Appointment ID</th>
+                <th>Doctor Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment[0] }}</td>
+                <td>{{ appointment[1] }}</td>
+                <td>{{ appointment[2] }}</td>
+                <td>{{ appointment[3] }}</td>
+                <td>{{ appointment[4] }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('Patient.cancel_appointment') }}" onsubmit="return confirmCancel();">
+                        {{ form.csrf_token }}
+                        <input type="hidden" name="appointment_id" value="{{ appointment[0] }}">
+                        <button type="submit" class="btn btn-danger">Cancel</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ url_for('Patient.schedule_appointment') }}">Schedule Appointment</a>
+
+    <!-- JavaScript for confirmation prompt -->
+    <script>
+        function confirmCancel() {
+            return confirm("Are you sure you want to cancel this appointment?");
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+      <legend class="border-bottom mb-4">Direct Patient Login</legend>
+      <form action="/direct" method="POST">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+
+        <table class="table table-striped">
+         <thead>
+          <tr>
+          <h5>Made for test purposes</h5>
+          If a user login is needed for security reasons, a system administrator can remove users from the list by setting <b>patient.direct</b> to FALSE. Inspect the <b>patient</b> table.
+           <br/> <br/> 
+          
+          UPDATE Patient SET DIRECT = TRUE WHERE CPR_number = some_id;
+          <br/>          
+          <br/>
+          
+          </tr>
+         <tr>
+            <th scope="col"></th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">CPR Number</th>
+            <th scope="col">Address</th>
+          </tr> 
+          </thead>
+        <tbody>
+
+ 
+        {% for rd in radio_direct %}
+          <tr>
+            <td>
+              <input type="radio" id="{{ rd[1] }}" name="p" value="{{ rd[1] }}">
+            </td>
+            <td>
+              <label for="{{ rd[1] }}"> {{ rd[0] }}</label>
+            </td>
+            <td>
+                {{ rd[1] }}
+            </td>
+            <td>
+                {{ rd[2] }}
+            </td>
+          </tr>
+         {% endfor %}
+        </tbody>
+        </table>
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+        </fieldset>
+ 
+
+        <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+            <small class="text-muted">
+                <a href="#">Forgot Password?</a>
+            </small>
+            <small class="text-muted ml-2">
+                    <a href="/login?is_doctor=false">Patient login?</a>
+                    <a href="/login?is_doctor=true">Doctor login?</a>
+            </small>
+      </form>
+        <table class="table table-striped">
+         <thead>
+          <tr>
+          <h5>Direct Patient Login</h5>
+          </tr>
+{% endblock content %}
+

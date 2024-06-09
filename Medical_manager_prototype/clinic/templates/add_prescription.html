@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Add Prescription</h2>
+    <form method="POST" action="{{ url_for('Doctor.add_prescription') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.patient_id.label }} {{ form.patient_id(class_="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.medication.label }} {{ form.medication(class_="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.dosage.label }} {{ form.dosage(class_="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.start_date.label }} {{ form.start_date(class_="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.end_date.label }} {{ form.end_date(class_="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.notes.label }} {{ form.notes(class_="form-control") }}
+        </div>
+        {{ form.submit(class_="btn btn-primary") }}
+    </form>
+{% endblock content %}
+
+
+
+

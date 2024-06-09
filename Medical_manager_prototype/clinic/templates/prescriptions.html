@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Prescriptions</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Prescription ID</th>
+                <th>Medication</th>
+                <th>Dosage</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prescription in prescriptions %}
+                <tr>
+                    <td>{{ prescription[0] }}</td>
+                    <td>{{ prescription[1] }}</td>
+                    <td>{{ prescription[2] }}</td>
+                    <td>{{ prescription[3] }}</td>
+                    <td>{{ prescription[4] }}</td>
+                    <td>{{ prescription[5] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
