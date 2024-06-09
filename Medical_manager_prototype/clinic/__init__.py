@@ -19,16 +19,6 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
-# Optionally initialize direct psycopg2 connection if needed
-if os.getenv('DATABASE_URL'):
-    import psycopg2
-    conn = psycopg2.connect(os.getenv('DATABASE_URL'), sslmode='require')
-else:
-    # Example local connection string, not recommended for production environments
-    db_conn_string = "dbname='ProjectDB' user='postgres' host='127.0.0.1' password='123'"
-    import psycopg2
-    conn = psycopg2.connect(db_conn_string)
-
 # Print statements to verify roles and session states
 roles = ["none", "doctor", "patient"]
 print(roles)
