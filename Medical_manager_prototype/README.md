@@ -1,4 +1,5 @@
-# Unfinished Bank Project: UIS_Prototype
+# DIS_Project
+DIS group project 2024, group 66
 ## usage
 The Medical Clinic Management System is a web application built with Python and the Flask framework, designed to streamline operations within a medical clinic. It offers roles for both patients and doctors, providing functionalities for managing appointments, medical records, prescriptions, and more.
 
