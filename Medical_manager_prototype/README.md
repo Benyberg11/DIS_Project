@@ -2,13 +2,13 @@
 ## usage
 The Medical Clinic Management System is a web application built with Python and the Flask framework, designed to streamline operations within a medical clinic. It offers roles for both patients and doctors, providing functionalities for managing appointments, medical records, prescriptions, and more.
 
-    git repository:  https://github.com/nynn0166/DIS_project
+    git repository:  https://github.com/Benyberg11/DIS_Project_1
 
 
 ## Clone the Repository:
     ```
-    git clone https://github.com/nynn0166/DIS_project
-    cd DIS_project
+    git clone https://github.com/Benyberg11/DIS_Project_1
+    cd DIS_Project_1
     ```
 
 ## Requirements:
@@ -136,18 +136,18 @@ This document provides an overview of all main user stories for both patient and
 ## Overview
 The Medical Clinic Management System is a web application built with Python and Flask. It provides functionalities for both patients and doctors to manage medical records, appointments, and prescriptions.
 
-## How to Compile
+## How to Compile (alternative, worked for me, just follow each step precisly)
 
 To get the project up and running, follow these steps:
 
 1. **Clone the Repository**
-    ```bash
-    git clone https://github.com/nynn0166/DIS_project
+    ```
+    git clone https://github.com/Benyberg11/DIS_Project_1
     cd DIS_project
     ```
 
 2. **Set Up Virtual Environment**
-    ```bash
+    ```
     python -m venv .venv
     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
     .venv\Scripts\activate
@@ -155,14 +155,14 @@ To get the project up and running, follow these steps:
     ```
 
 3. **Initialize the Database**
-    ```bash
+    ```
     psql -d {database} -U {username} -W -f clinic/schema.sql
     psql -d {database} -U {username} -W -f clinic/schema_ins.sql
     psql -d {database} -U {username} -W -f clinic/schema_upd.sql
     ```
 
 4. **Run the Application**
-    ```bash
+    ```
     flask --app run.py run
     ```
 
@@ -207,3 +207,22 @@ For detailed interaction instructions, see ![Interaction](Interaction.md)
 
 ## E/R Diagram
 ![E/R Diagram](ER_Diagram.jpg)
+
+To enhance the documentation of your Medical Clinic Management System project with a development section highlighting areas for potential improvement and future development, you can integrate suggestions regarding the functionality related to password management, patient addition, and other features. Here's a structured way to add this information under a new section titled **Development Opportunities**:
+
+---
+
+## Development Opportunities
+
+This section outlines potential enhancements and feature developments that could significantly improve the usability and functionality of the Medical Clinic Management System. These enhancements are suggestions based on current system capabilities and user feedback.
+
+### 1. Password Management Enhancement
+- **Current State**: The system currently lacks a real-time password reset functionality. Patients and doctors can initiate a password reset, but the system does not actually send an email link for password resetting.
+- **Proposed Enhancement**: Implement a fully functional password reset feature that sends a reset link to the user's registered email. This will enhance security and user convenience by allowing users to independently manage their login credentials.
+
+### 2. Integration of Medical Journals at Patient Registration
+- **Current State**: When doctors add new patients to the system, these patients are registered without a corresponding medical journal being created automatically.
+- **Proposed Enhancement**: Modify the patient addition workflow to automatically generate a medical journal whenever a new patient is registered. This would streamline the process for doctors and ensure that each patient's medical records are immediately ready for entries.
+
+### 3. Extended Usability Features
+- **Current State**: The system provides basic functionalities required for managing medical clinic operations but lacks several usability features that could enhance user experience, only the sky is the limit!
