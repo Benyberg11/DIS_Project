@@ -9,6 +9,11 @@ python -m venv .venv
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 .venv\Scripts\activate
 pip install -r requirements.txt
+pip install psycopg2
+pip install flask-bcrypt
+pip install flask_login
+pip install flask_wtf
+pip install flask_sqlalchemy
 Set the database configuration in the init.py file.
 psql -d {database} -U {username} -W -f clinic/schema.sql
 psql -d {database} -U {username} -W -f clinic/schema_ins.sql
